@@ -11,10 +11,10 @@ class UploadCsvController extends Controller
     	$this->validate($request, [
     		'csv' => 'required|mimes:csv,txt' //have to use text here as well
 		]);
-    	if( file_exists( base_path('csv/source/posts.csv')) ){
-    		unlink( base_path('csv/source/posts.csv') );
+    	if( file_exists( base_path('public/csv/source/posts.csv')) ){
+    		unlink( base_path('/public/csv/source/posts.csv') );
     	}
-    	$request->file('csv')->move(base_path('csv/source'), 'posts.csv');
+    	$request->file('csv')->move(base_path('public/csv/source'), 'posts.csv');
 
     	return 'true';
     

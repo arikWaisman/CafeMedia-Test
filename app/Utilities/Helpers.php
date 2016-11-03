@@ -22,7 +22,7 @@ class Helpers
 
 	public function loopThroughCSV(){
 
-		$csv = Reader::createFromPath( base_path('csv/source/posts.csv') );
+		$csv = Reader::createFromPath( base_path('public/csv/source/posts.csv') );
 		$offset = 0; //this will use the first row as the keys in each Assoc Array
         $csvRows = $csv->fetchAssoc($offset);
 

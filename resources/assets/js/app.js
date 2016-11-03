@@ -9,6 +9,20 @@ require('./bootstrap');
 
 $(document).ready(function(){
 	var counter = 0;
+	var checkForCsvFile = function(){
+		$.ajax({
+		    url:baseURL+'/csv/source/posts.csv',
+		    type:'HEAD',
+		    data:{ _token: token },
+		    error: function(){
+		        $('.file-exists').attr('disabled', true);
+		    },
+		    success: function(){
+		        $('.file-exists').attr('disabled', false);
+		    }
+		});
+	}
+	checkForCsvFile();
 	$('#upload_file_form').on('submit', function(e){
 
 		e.preventDefault();
@@ -29,6 +43,7 @@ $(document).ready(function(){
 		    enctype: "multipart/form-data",
 			data: new FormData( $(this)[0] ),
 			success: function(result, status, xhr){
+				checkForCsvFile();
 				if( $('.form-wrapper').children('.alert-success').length == 0 ){
 					$('.form-wrapper').children('.alert-danger').remove();
 					$('.form-wrapper').prepend('<h3 class="alert alert-success text-center">A CSV Exists! to overwrite re-upload</h3>');
