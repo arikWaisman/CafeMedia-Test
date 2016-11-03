@@ -11,15 +11,15 @@ $(document).ready(function(){
 	var counter = 0;
 	var checkForCsvFile = function(){
 		$.ajax({
-		    url:baseURL+'/csv/source/posts.csv',
-		    type:'HEAD',
-		    data:{ _token: token },
-		    error: function(){
-		        $('.file-exists').attr('disabled', true);
-		    },
-		    success: function(){
-		        $('.file-exists').attr('disabled', false);
-		    }
+			url:baseURL+'/public/csv/source/posts.csv',
+			type:'HEAD',
+			data:{ _token: token },
+			error: function(){
+				$('.file-exists').attr('disabled', true);
+			},
+			success: function(){
+				$('.file-exists').attr('disabled', false);
+			}
 		});
 	}
 	checkForCsvFile();
@@ -29,18 +29,18 @@ $(document).ready(function(){
 		var submissionURL = baseURL + '/csv_upload';
 
 		$.ajaxSetup({
-            headers: {
-                'X-XSRF-TOKEN': token
-            }
-        });
+			headers: {
+				'X-XSRF-TOKEN': token
+			}
+		});
 
 		$.ajax({
 			method: 'POST',
 			url: submissionURL,
-		    processData: false,
-		    contentType: false,
-		    dataType: 'json',
-		    enctype: "multipart/form-data",
+			processData: false,
+			contentType: false,
+			dataType: 'json',
+			enctype: "multipart/form-data",
 			data: new FormData( $(this)[0] ),
 			success: function(result, status, xhr){
 				checkForCsvFile();
@@ -49,6 +49,7 @@ $(document).ready(function(){
 					$('.form-wrapper').prepend('<h3 class="alert alert-success text-center">A CSV Exists! to overwrite re-upload</h3>');
 				} else {
 					counter++;
+					checkForCsvFile();
 					$('.form-wrapper').children('.alert-success').remove();
 					$('.form-wrapper').children('.alert-danger').remove();
 					$('.form-wrapper').prepend('<h3 class="alert alert-success text-center">You have re-uploaded the CSV X'+ counter +'</h3>');
