@@ -43,7 +43,7 @@ $(document).ready(function(){
 				var response = $.parseJSON(result.responseText);
 				var $errors = $('<ul class="alert alert-danger text-center"></ul>')
 				$.each(response, function(key, value){
-					$errors.append('<li>' + v[0] + '</li>');
+					$errors.append('<li>' + value[0] + '</li>');
 				})
 				$('.form-wrapper').children('.alert-success').remove();
 				$('.form-wrapper').children('.alert-danger').remove();
