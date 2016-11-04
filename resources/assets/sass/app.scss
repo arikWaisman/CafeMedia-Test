@@ -24,6 +24,13 @@
 				padding-top: 10px;
 				padding-bottom: 10px;
 			}
+			form{
+				display: inline-block;
+				float: left;
+			}
+			#delete-form{
+				padding-left: 15px;
+			}
 		}
 		.alert-danger{
 			list-style-type: none;

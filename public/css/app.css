@@ -5778,6 +5778,13 @@ button.close {
   padding-top: 10px;
   padding-bottom: 10px; }
 
+.cafe-media-test .form-wrapper .form-group form {
+  display: inline-block;
+  float: left; }
+
+.cafe-media-test .form-wrapper .form-group #delete-form {
+  padding-left: 15px; }
+
 .cafe-media-test .form-wrapper .alert-danger {
   list-style-type: none; }
 

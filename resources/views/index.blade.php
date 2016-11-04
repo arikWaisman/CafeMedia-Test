@@ -23,14 +23,19 @@
 				@if( File::exists( base_path('public/csv/source/posts.csv') ) )
 					<h3 class="alert alert-success text-center">A CSV Exists! to overwrite re-upload</h3>
 				@endif
-
-					<form id="upload_file_form" class="col-xs-12">
-						<div class="form-group">
+				<div class="form-group col-xs-12">
+					<form id="upload_file_form">
 							<h3>Upload a CSV to parse</h3><button type="submit" class="btn btn-primary">Upload</button>
 							<input id="upload_file" type="file" name="csv" accept=".csv"> 
-						</div>
 						{{ csrf_field() }}
 					</form>
+					<form id="delete-form" method="GET" action="{{ route('deleteCsv') }}" style="display: none;">
+						<button type="submit" class="btn btn-danger">Delete</button>
+						{{ csrf_field() }}
+					</form>
+				</div>
+
+					
 				
 
 				<form  class="col-xs-12" method="post" action="{{ route('topPosts') }}">

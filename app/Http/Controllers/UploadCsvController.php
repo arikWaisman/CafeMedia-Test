@@ -19,4 +19,14 @@ class UploadCsvController extends Controller
 		return 'true';
 	
 	}
+
+	public function delete(){
+
+		if( file_exists( base_path('public/csv/source/posts.csv')) ){
+			unlink( base_path('/public/csv/source/posts.csv') );
+		}
+
+		return redirect('/');
+
+	}
 }

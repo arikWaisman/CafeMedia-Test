@@ -20,3 +20,5 @@ Route::post('/not_top_posts', 'PostsCsvController@notTopPostsDownload')->name('N
 Route::post('/daily_top_posts', 'PostsCsvController@dailyTopPostsDownload')->name('dailyTopPosts');
 
 Route::post('/csv_upload', 'UploadCsvController@upload')->name('uploadCsv');
+
+Route::get('/csv_delete', 'UploadCsvController@delete')->name('deleteCsv');
