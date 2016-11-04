@@ -29,7 +29,7 @@
 							<input id="upload_file" type="file" name="csv" accept=".csv"> 
 						{{ csrf_field() }}
 					</form>
-					<form id="delete-form" method="GET" action="{{ route('deleteCsv') }}" style="display: none;">
+					<form id="delete-form" method="GET" action="{{ route('deleteCsv') }}" style="{!! File::exists( base_path('public/csv/source/posts.csv') ) ? '' : 'display: none;' !!}">
 						<button type="submit" class="btn btn-danger">Delete</button>
 						{{ csrf_field() }}
 					</form>
